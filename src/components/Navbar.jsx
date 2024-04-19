@@ -1,13 +1,14 @@
 import Logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-success">
       <div class="container-fluid">
         <img src={Logo} alt="" height={50} />
-        <a class="navbar-brand" href="#">
+        <Link class="navbar-brand" to="/">
           FoodieCrew
-        </a>
+        </Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -21,16 +22,15 @@ export default function Navbar() {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">
+            <Link class="nav-link active" aria-current="page" to="/">
               Home
-            </a>
-            <a class="nav-link" href="#">
-              Features
-            </a>
-            <a class="nav-link" href="#">
+            </Link>
+            <Link class="nav-link" to="/about">
+              About
+            </Link>
+            <Link class="nav-link" to="/">
               Pricing
-            </a>
-            <a class="nav-link disabled">Disabled</a>
+            </Link>
           </div>
         </div>
       </div>

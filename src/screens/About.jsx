@@ -1,11 +1,11 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-export default function Home() {
+export function About() {
   return (
     <>
       <Navbar />
-      Home
+      About
       <Footer />
     </>
   );
