@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
-      <div class="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-light bg-success">
+      <div className="container-fluid">
         <img src={Logo} alt="" height={50} />
-        <Link class="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/">
           FoodieCrew
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavAltMarkup"
@@ -18,17 +18,17 @@ export default function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <Link class="nav-link active" aria-current="page" to="/">
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <Link className="nav-link active" aria-current="page" to="/">
               Home
             </Link>
-            <Link class="nav-link" to="/about">
+            <Link className="nav-link" to="/about">
               About
             </Link>
-            <Link class="nav-link" to="/">
+            <Link className="nav-link" to="/">
               Pricing
             </Link>
           </div>
