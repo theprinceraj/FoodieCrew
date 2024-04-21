@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function foodCard({ itemName, itemDescription, redirectURL }) {
+export default function FoodCard({ itemName, itemDescription, redirectURL }) {
   return (
     <>
       <div class="card" style="width: 18rem;">
