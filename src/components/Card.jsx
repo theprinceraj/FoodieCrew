@@ -1,7 +1,11 @@
 export default function Card() {
   return (
     <div className="card m-3" style={{ width: "18rem", maxHeight: "360px" }}>
-      <img src="..." className="card-img-top" alt="..." />
+      <img
+        src="https://media.istockphoto.com/id/1292629333/photo/paneer-butter-masala-or-cheese-cottage-curry-served-over-a-rustic-wooden-background-selective.jpg?s=1024x1024&w=is&k=20&c=5gSyMuGrJ4W7ofeugy9g1N5nZnCfZfegDV1il-f70PY="
+        className="card-img-top"
+        alt="..."
+      />
       <div className="card-body">
         <h5 className="card-title">Noodles</h5>
         <p className="card-text">Rs. 100</p>
