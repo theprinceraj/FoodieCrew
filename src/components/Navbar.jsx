@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-success">
       <div className="container-fluid">
         <img src={Logo} alt="" height={50} />
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand fs-3 fst-italic" to="/">
           FoodieCrew
         </Link>
         <button
@@ -25,11 +25,8 @@ export default function Navbar() {
             <Link className="nav-link active" aria-current="page" to="/">
               Home
             </Link>
-            <Link className="nav-link" to="/about">
-              About
-            </Link>
-            <Link className="nav-link" to="/">
-              Pricing
+            <Link className="nav-link" to="/login">
+              Login
             </Link>
           </div>
         </div>
