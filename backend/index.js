@@ -1,7 +1,7 @@
 import express from "express";
 
 const app = express();
-const PORT = 5000;
+const PORT = 5173;
 app.use(express.json());
 
 import { connectDB } from "./db.js";

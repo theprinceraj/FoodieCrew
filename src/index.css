@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "NHaasGroteskDSPro-65Md";
+  src: url("https://db.onlinewebfonts.com/t/c891e94039740e4a24a9f53324fd91be.eot");
+  src: url("https://db.onlinewebfonts.com/t/c891e94039740e4a24a9f53324fd91be.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/c891e94039740e4a24a9f53324fd91be.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/c891e94039740e4a24a9f53324fd91be.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/c891e94039740e4a24a9f53324fd91be.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/c891e94039740e4a24a9f53324fd91be.svg#NHaasGroteskDSPro-65Md")format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   font-family: "NHaasGroteskDSPro-65Md" !important;
 }
