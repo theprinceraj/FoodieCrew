@@ -108,10 +108,10 @@ export default function Signup() {
             FoodieCrew?
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary bg-info">
           Submit
         </button>
-        <Link to="/login" className="m-3 btn btn-danger">
+        <Link to="/login" className="m-3 btn btn-primary bg-success">
           Already a user?
         </Link>
       </form>

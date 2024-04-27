@@ -5,21 +5,18 @@ import Navbar from "../components/Navbar";
 export default function Home() {
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
-      <div>
-        <Carousel />
-      </div>
+      <Navbar />
+
+      <Carousel />
+
       <div className="d-flex justify-content-evenly flex-wrap">
         <Card />
         <Card />
         <Card />
         <Card />
       </div>
-      <div>
-        <Footer />
-      </div>
+      
+      <Footer />
     </>
   );
 }
