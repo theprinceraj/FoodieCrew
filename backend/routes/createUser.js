@@ -1,6 +1,7 @@
 import { User } from "../models/User.js";
 import { body, validationResult } from "express-validator";
-
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import express from "express";
 const router = express.Router();
 
@@ -19,12 +20,16 @@ router.post(
       if (!error.isEmpty()) {
         return res.status(400).json({ error: error.array() });
       }
-
       const { name, email, password, location } = req.body;
+
+      const salt = await bcrypt.genSalt(10);
+      const securedPassword = await bcrypt.hash(password, salt);
+
+      console.log(securedPassword);
 
       await User.create({
         name: name,
-        password: password,
+        password: securedPassword,
         email: email,
         location: location,
       });
@@ -51,16 +56,27 @@ router.post(
 
       const { email, password } = req.body;
 
-      const user = await User.findOne({
-        email: email,
-        password: password,
-      });
+      const user = await User.findOne({ email: email });
       if (!user) {
         return res.status(400).json({ error: "Invalid Credentials" });
+      } else {
+        const isPwdMatch = await bcrypt.compare(password, user.password);
+        if (!isPwdMatch) {
+          return res.status(400).json({ error: "Invalid Credentials" });
+        } else {
+          const data = {
+            user: {
+              id: user.id,
+            },
+          };
+          const authToken = jwt.sign(data, process.env.JWT_SECRET);
+          res.json({ authToken: authToken, success: true });
+        }
       }
-
-      res.json({ userData: user, success: true });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      res.json({ success: false });
+    }
   }
 );
 

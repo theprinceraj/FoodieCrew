@@ -24,10 +24,10 @@ export default function Login() {
     });
     if (response.ok) {
       const json = await response.json();
-      console.log("-------------", json.userData);
       if (json.error) {
         alert("Enter Valid Credentials");
       } else {
+        localStorage.setItem("authToken", json.authToken);
         navigate("/");
       }
     } else {
