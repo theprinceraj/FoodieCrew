@@ -24,8 +24,10 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-import apiRoute from "./routes/createUser.js";
-app.use("/api", apiRoute);
+import createUserRoute from "./routes/createUser.js";
+import foodDataRoute from "./routes/displayData.js";
+app.use("/api", createUserRoute);
+app.use("/api", foodDataRoute);
 
 app.listen(PORT, () => {
   console.log(`Live at http://localhost:${PORT}`);
