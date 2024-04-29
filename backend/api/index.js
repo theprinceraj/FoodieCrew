@@ -22,7 +22,7 @@ app.use(express.json());
 import { connectDB } from "../src/db.js";
 await connectDB();
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.send("Hello, World!");
 });
 
