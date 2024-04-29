@@ -23,7 +23,7 @@ import { connectDB } from "../src/db.js";
 await connectDB();
 
 app.use("/", (req, res) => {
-  res.send("Hello, World!");
+  res.json({ "Hello, World!": "Welcome to FoodieCrew" });
 });
 
 import createUserRoute from "../src/routes/createUser.js";
