@@ -17,15 +17,15 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-import { connectDB } from "../db.js";
+import { connectDB } from "../src/db.js";
 await connectDB();
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-import createUserRoute from "../routes/createUser.js";
-import foodDataRoute from "../routes/displayData.js";
+import createUserRoute from "../src/routes/createUser.js";
+import foodDataRoute from "../src/routes/displayData.js";
 app.use("/api", createUserRoute);
 app.use("/api", foodDataRoute);
 
