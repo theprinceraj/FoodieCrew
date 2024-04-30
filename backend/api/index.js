@@ -34,3 +34,5 @@ app.use("/api", foodDataRoute);
 app.listen(PORT, () => {
   console.log(`Live at http://localhost:${PORT}`);
 });
+
+export default app;
