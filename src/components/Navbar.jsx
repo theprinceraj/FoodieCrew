@@ -1,7 +1,15 @@
 import Logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const authTokenVar = localStorage.getItem("authToken");
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-success">
       <div className="container-fluid">
@@ -21,17 +29,44 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <Link className="nav-link active" aria-current="page" to="/">
-              Home
-            </Link>
-            <Link className="nav-link" to="/login">
-              Login
-            </Link>
-            <Link className="nav-link" to="/signup">
-              Signup
-            </Link>
-          </div>
+          <ul className="navbar-nav me-auto mb-1">
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/">
+                Home
+              </Link>
+            </li>
+            {authTokenVar ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/myorders">
+                  Order History
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
+          </ul>
+          {authTokenVar ? (
+            <div className="d-flex">
+              <Link className="btn bg-white text-success mx-1" to="/cart">
+                My Cart
+              </Link>
+              <div
+                className="btn bg-white text-danger mx-1"
+                onClick={handleLogout}
+              >
+                Logout
+              </div>
+            </div>
+          ) : (
+            <div className="d-flex">
+              <Link className="btn bg-white text-success mx-1" to="/login">
+                Login
+              </Link>
+              <Link className="btn bg-white text-success mx-1" to="/signup">
+                Signup
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>

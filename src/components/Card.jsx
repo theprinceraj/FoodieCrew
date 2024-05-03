@@ -1,9 +1,19 @@
+import addToCart from "../assets/bag-plus-fill.svg";
+
 export default function Card({ foodName, foodImg, options }) {
   let priceOptions = Object.keys(options);
   return (
-    <div className="card m-3" style={{ width: "17rem", height: "350px", maxWidth: "275px" }}>
+    <div
+      className="card m-3"
+      style={{ width: "17rem", height: "350px", maxWidth: "275px" }}
+    >
       <div className="card-img-top object-fit-cover object-position-center overflow-hidden">
-        <img src={foodImg} alt="..." className="card-img-top" style={{ height: "203px" }} />
+        <img
+          src={foodImg}
+          alt="..."
+          className="card-img-top"
+          style={{ height: "203px" }}
+        />
       </div>
       <div className="card-body">
         <h5 className="card-title">{foodName}</h5>
@@ -29,6 +39,15 @@ export default function Card({ foodName, foodImg, options }) {
           </select>
 
           <div className="d-inline h-100 fs-5">Total Price</div>
+
+          <div className="cursor-pointer text-white d-flex align-items-center justify-content-center bg-success rounded-3">
+            <span>Add to Cart</span>
+            <img
+              src={addToCart}
+              alt="Add to Cart"
+              className="btn-close-white m-2"
+            />
+          </div>
         </div>
       </div>
     </div>
