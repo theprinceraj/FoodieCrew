@@ -58,11 +58,15 @@ router.post(
 
       const user = await User.findOne({ email: email });
       if (!user) {
-        return res.status(400).json({ error: "Invalid Credentials" });
+        return res
+          .status(400)
+          .json({ error: "No such email-password pair found." });
       } else {
         const isPwdMatch = await bcrypt.compare(password, user.password);
         if (!isPwdMatch) {
-          return res.status(400).json({ error: "Invalid Credentials" });
+          return res
+            .status(400)
+            .json({ error: "No such email-password pair found." });
         } else {
           const data = {
             user: {
@@ -75,7 +79,9 @@ router.post(
       }
     } catch (error) {
       console.log(error);
-      res.json({ success: false });
+      return res
+        .status(500)
+        .json({ error: "Internal server error. Please try again later." });
     }
   }
 );
