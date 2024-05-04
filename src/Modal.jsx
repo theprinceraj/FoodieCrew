@@ -1,6 +1,8 @@
+import ReactDOM from "react-dom";
+
 const MODAL_STYLES = {
   position: "fixed",
-  tope: "50%",
+  top: "50%",
   left: "50%",
   backgroundColor: "rgb(34,34,34)",
   transform: "translate(-50%, -50%)",

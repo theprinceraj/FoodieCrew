@@ -18,11 +18,25 @@ const reducer = (state, action) => {
           qty: action.qty,
         },
       ];
-
     case "REMOVE":
-      return [...state];
+      let newState = [...state];
+      newState.splice(action.index, 1);
+      return newState;
+    case "UPDATE":
+      const updatedState = state.map((food) => {
+        if (food.id === action.id) {
+          return {
+            ...food,
+            qty: parseInt(action.qty) + parseInt(food.qty),
+            price: action.price + food.price,
+          };
+        } else {
+          return food;
+        }
+      });
+      return updatedState;
     default:
-      console.log("Error in reducre.");
+      console.log("Error in reducer.");
   }
 };
 

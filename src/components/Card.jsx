@@ -10,6 +10,35 @@ export default function Card({ foodItem, options }) {
   const [size, setSize] = useState("");
 
   const handleAddToCart = async () => {
+    let food = null;
+    for (const item of data) {
+      if (item.id === foodItem._id && size === item.size) {
+        food = item;
+        break;
+      }
+    }
+    if (food !== null) {
+      console.log(food.size, size);
+      if (food.size === size) {
+        await dispatch({
+          type: "UPDATE",
+          id: foodItem._id,
+          price: finalPrice,
+          qty: qty,
+        });
+      } else {
+        await dispatch({
+          type: "ADD",
+          id: foodItem._id,
+          name: foodItem.name,
+          price: finalPrice,
+          qty: qty,
+          size: size,
+          img: foodItem.img,
+        });
+      }
+      return;
+    }
     await dispatch({
       type: "ADD",
       id: foodItem._id,
@@ -19,7 +48,6 @@ export default function Card({ foodItem, options }) {
       size: size,
       img: foodItem.img,
     });
-    console.log(data);
   };
   let finalPrice = qty * parseInt(options[size]);
   useEffect(() => {
@@ -68,8 +96,6 @@ export default function Card({ foodItem, options }) {
                 {data.charAt(0).toUpperCase() + data.slice(1)}
               </option>
             ))}
-            {/* <option value="half">Half</option>
-            <option value="full">Full</option> */}
           </select>
 
           <div className="d-inline h-100 fs-5">₹{finalPrice}/-</div>
