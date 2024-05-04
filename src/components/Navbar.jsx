@@ -1,9 +1,18 @@
 import Logo from "../assets/logo.svg";
+import Badge from "react-bootstrap/Badge";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "./ContextReducer";
+import { useState } from "react";
+import Modal from "../Modal";
+import eyeIcon from "../assets/eye-fill.svg";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const authTokenVar = localStorage.getItem("authToken");
+
+  const [cartView, setCartView] = useState(false);
+
+  const data = useCart() || 0;
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -47,9 +56,21 @@ export default function Navbar() {
           </ul>
           {authTokenVar ? (
             <div className="d-flex">
-              <Link className="btn bg-white text-success mx-1" to="/cart">
-                My Cart
+              <Link
+                className="btn bg-white text-success mx-1 d-flex align-items-center justify-content-center"
+                to="/cart"
+              >
+                <span className="me-1">My Cart</span>
+                <Badge pill bg="danger">
+                  {data.length}
+                </Badge>
               </Link>
+
+              <div className="btn bg-white text-success mx-1">
+                <img src={eyeIcon} alt="Mini View of Cart" />
+              </div>
+              {cartView ? <Modal onClose={() => setCartView(false)} /> : null}
+
               <div
                 className="btn bg-white text-danger mx-1"
                 onClick={handleLogout}
