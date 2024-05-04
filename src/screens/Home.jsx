@@ -121,14 +121,11 @@ export default function Home() {
                       item.name.toLowerCase().includes(search.toLowerCase())
                   )
                 : [];
-
             return (
-              <>
+              <div key={data.CategoryName}>
                 {filteredItems.length > 0 && (
                   <>
-                    <div key={data._id} className="fs-3 m-3">
-                      {data.CategoryName}
-                    </div>
+                    <div className="fs-3 m-3">{data.CategoryName}</div>
                     <hr />
                     <div className="d-flex flex-wrap justify-content-center align-items-center">
                       {foodItem !== null && foodItem !== undefined ? (
@@ -144,8 +141,7 @@ export default function Home() {
                             return (
                               <Card
                                 key={filteredItem._id}
-                                foodName={filteredItem.name}
-                                foodImg={filteredItem.img}
+                                foodItem={filteredItem}
                                 options={filteredItem.options[0]}
                               />
                             );
@@ -156,7 +152,7 @@ export default function Home() {
                     </div>
                   </>
                 )}
-              </>
+              </div>
             );
           })
         ) : (
