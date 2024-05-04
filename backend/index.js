@@ -20,14 +20,14 @@ app.use(express.json());
 import { connectDB } from "./db.js";
 await connectDB();
 
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
-
 import createUserRoute from "./routes/createUser.js";
 import foodDataRoute from "./routes/displayData.js";
 app.use("/api", createUserRoute);
 app.use("/api", foodDataRoute);
+
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
 
 app.listen(PORT, () => {
   console.log(`Live at http://localhost:${PORT}`);
