@@ -27,7 +27,7 @@ app.use("/api", createUserRoute);
 app.use("/api", foodDataRoute);
 app.use("/api", orderDataRoute);
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.json({ "Hello, World!": "Welcome to FoodieCrew." });
 });
 
