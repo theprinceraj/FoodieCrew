@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState("");
-
   const [foodItem, setFoodItem] = useState(null);
   const [foodCat, setFoodCat] = useState(null);
 
