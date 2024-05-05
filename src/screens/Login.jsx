@@ -13,20 +13,27 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: credentials.email,
-        password: credentials.password,
-      }),
+    const response = await fetch(
+      `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      }
+    );
+    console.log({
+      email: credentials.email,
+      password: credentials.password,
     });
     if (response.ok) {
       const json = await response.json();
       if (json.error) {
-        console.log(json)
+        console.log(json);
         alert("Enter Valid Credentials");
       } else {
         localStorage.setItem("userEmail", json.email);
