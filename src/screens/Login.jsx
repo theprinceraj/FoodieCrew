@@ -30,10 +30,8 @@ export default function Login() {
     if (response.ok) {
       const json = await response.json();
       if (json.error) {
-        console.log(json);
         alert("Enter Valid Credentials");
       } else {
-        console.log(json.email);
         localStorage.setItem("userEmail", json.email);
         localStorage.setItem("authToken", json.authToken);
         navigate("/");
