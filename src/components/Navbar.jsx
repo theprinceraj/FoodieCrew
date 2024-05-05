@@ -10,7 +10,7 @@ import CartTable from "./CartTable";
 export default function Navbar({ showCartOptions = true }) {
   const navigate = useNavigate();
   const authTokenVar = localStorage.getItem("authToken");
-
+  console.log(authTokenVar)
   const [cartView, setCartView] = useState(false);
 
   const data = useCart() || 0;
