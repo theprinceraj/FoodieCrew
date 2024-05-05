@@ -13,6 +13,8 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("YOOYOIYOY", credentials.email, credentials.password);
     const response = await fetch(
       `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`,
       {
@@ -26,7 +28,6 @@ export default function Login() {
         }),
       }
     );
-    console.log("YOOYOIYOY", credentials.email, credentials.password);
     if (response.ok) {
       const json = await response.json();
       if (json.error) {
