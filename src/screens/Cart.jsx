@@ -8,7 +8,7 @@ export default function Cart() {
   const dispatch = useDispatchCart();
   const handleCheckout = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch("/api/orderData", {
+    let response = await fetch("http://localhost:3000/api/updateOrderData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export default function Cart() {
       body: JSON.stringify({
         email: userEmail,
         order_data: data,
-        order_date: new Date().toDateString(),
+        order_date: new Date().toUTCString(),
       }),
     });
 

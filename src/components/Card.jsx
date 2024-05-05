@@ -36,7 +36,6 @@ export default function Card({ foodItem, options }) {
           img: foodItem.img,
         });
       }
-      localStorage.setItem("order_data", data);
       return;
     }
     await dispatch({
@@ -48,7 +47,6 @@ export default function Card({ foodItem, options }) {
       size: size,
       img: foodItem.img,
     });
-    localStorage.setItem("order_data", JSON.stringify(data));
     return;
   };
   let finalPrice = qty * parseInt(options[size]);

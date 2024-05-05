@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About } from "./screens/About.jsx";
 import Login from "./screens/Login.jsx";
 import "../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css";
-// import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Signup from "./screens/Signup.jsx";
 import Cart from "./screens/Cart.jsx";
+import { CartProvider } from "./components/ContextReducer.jsx";
+import Home from "./screens/Home.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
   },
   {
     path: "/about",
@@ -38,6 +38,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </React.StrictMode>
 );

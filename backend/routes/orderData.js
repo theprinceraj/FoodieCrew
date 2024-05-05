@@ -10,8 +10,7 @@ router.post("/updateOrderData", async (req, res) => {
   if (eId === null) {
     await Order.create({
       email: data.email,
-      order_data: data.order_data,
-      order_date: data.order_date,
+      order_data: [data.order_data],
     }).then(() => {
       res.status(200).json({
         message: "Order saved successfully",
@@ -22,7 +21,9 @@ router.post("/updateOrderData", async (req, res) => {
     await Order.findOneAndUpdate(
       { email: data.email },
       {
-        order_data: data.order_data,
+        $push: {
+          order_data: data.order_data,
+        },
       }
     ).then(() => {
       res.status(200).json({
