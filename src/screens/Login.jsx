@@ -26,10 +26,7 @@ export default function Login() {
         }),
       }
     );
-    console.log({
-      email: credentials.email,
-      password: credentials.password,
-    });
+    console.log("YOOYOIYOY", credentials.email, credentials.password);
     if (response.ok) {
       const json = await response.json();
       if (json.error) {
