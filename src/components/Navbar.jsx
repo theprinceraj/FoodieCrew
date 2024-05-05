@@ -15,6 +15,7 @@ export default function Navbar({ showCartOptions = true }) {
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
+    setAuthTokenVar(null);
     navigate("/login");
   };
 
