@@ -28,13 +28,12 @@ export default function MyOrders() {
     };
     fetchOrderData();
   }, []);
-  console.log(ordersResponse);
   return (
     <>
       <Navbar />
       <div
         className="container m-auto mt-5 table-responsive table-responsive-sm table-responsive-md"
-        style={{ height: "400px", overflowY: "scroll" }}
+        style={{ height: "510px", overflowY: "scroll" }}
       >
         <table className="table table-striped table-hover">
           <thead
@@ -61,7 +60,7 @@ export default function MyOrders() {
                       ))}
                     </div>
                   </td>
-                  <td>${calculateTotal(order.items)}</td>
+                  <td>₹ {calculateTotal(order.items)}</td>
                 </tr>
               ))}
           </tbody>
