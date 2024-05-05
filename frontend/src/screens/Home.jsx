@@ -11,7 +11,6 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState(null);
 
   const loadData = async () => {
-    console.log(ENDPOINTS)
     let response = await fetch(`${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/foodData`, {
       method: "POST",
       headers: {
