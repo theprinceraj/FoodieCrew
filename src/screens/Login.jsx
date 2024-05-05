@@ -51,7 +51,7 @@ export default function Login() {
       <div className="container p-5">
         <form
           onSubmit={async (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             await handleSubmit();
           }}
         >
