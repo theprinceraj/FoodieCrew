@@ -11,24 +11,19 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState(null);
 
   const loadData = async () => {
-    console.log(ENDPOINTS);
-    let response = await fetch(
-      `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/foodData`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    console.log(ENDPOINTS)
+    let response = await fetch(`${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/foodData`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     response = await response.json();
 
     setFoodCat(response[1]);
     setFoodItem(response[0]);
   };
-  let authToken;
   useEffect(() => {
-    authToken = localStorage.getItem("authToken");
     loadData();
   }, []);
 

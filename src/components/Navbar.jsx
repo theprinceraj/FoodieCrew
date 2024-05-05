@@ -2,15 +2,13 @@ import Logo from "../assets/logo.svg";
 import Badge from "react-bootstrap/Badge";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "./ContextReducer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../Modal";
 import eyeIcon from "../assets/eye-fill.svg";
 import CartTable from "./CartTable";
 
 export default function Navbar({ showCartOptions = true }) {
   const navigate = useNavigate();
-  const authTokenVar = localStorage.getItem("authToken");
-  console.log(authTokenVar)
   const [cartView, setCartView] = useState(false);
 
   const data = useCart() || 0;
@@ -19,6 +17,12 @@ export default function Navbar({ showCartOptions = true }) {
     localStorage.removeItem("authToken");
     navigate("/login");
   };
+
+  let authTokenVar;
+  useEffect(() => {
+    authTokenVar = localStorage.getItem("authToken");
+    console.log(authTokenVar);
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-success">
