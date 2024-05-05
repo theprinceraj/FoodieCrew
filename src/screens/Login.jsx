@@ -11,9 +11,7 @@ export default function Login() {
   });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     console.log("YOOYOIYOY", credentials.email, credentials.password);
     const response = await fetch(
       `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`,
@@ -51,7 +49,12 @@ export default function Login() {
     <>
       <Navbar />
       <div className="container p-5">
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <div className="mb-3">
             <label htmlFor="InputEmail1" className="form-label">
               Email address
