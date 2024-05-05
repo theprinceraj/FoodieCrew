@@ -30,7 +30,6 @@ app.use("/api", orderDataRoute);
 app.use("/", (req, res) => {
   res.json({ "Hello, World!": "Welcome to FoodieCrew." });
 });
-
 app.listen(PORT, () => {
   console.log(`Live at http://localhost:${PORT}`);
 });
