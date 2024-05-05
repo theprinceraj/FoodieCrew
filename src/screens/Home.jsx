@@ -1,7 +1,7 @@
+import { ENDPOINTS } from "../../endpoints";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -11,7 +11,8 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState(null);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:3000/api/foodData", {
+    console.log(ENDPOINTS)
+    let response = await fetch(`${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/foodData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

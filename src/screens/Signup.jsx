@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ENDPOINTS } from "../../endpoints";
 
 export default function Signup() {
   const [credentials, setCredentials] = useState({
@@ -12,18 +13,21 @@ export default function Signup() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/createUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        email: credentials.email,
-        password: credentials.password,
-        location: credentials.location,
-      }),
-    });
+    const response = await fetch(
+      `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/createUser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          email: credentials.email,
+          password: credentials.password,
+          location: credentials.location,
+        }),
+      }
+    );
     if (response.ok) {
       const json = await response.json();
       console.log(json);

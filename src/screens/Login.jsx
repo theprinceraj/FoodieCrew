@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ENDPOINTS } from "../../endpoints";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -12,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/loginUser", {
+    const response = await fetch(`${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

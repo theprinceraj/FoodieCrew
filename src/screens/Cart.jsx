@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import { useDispatchCart } from "../components/ContextReducer";
 import Modal from "../Modal";
 import { useState } from "react";
+import { ENDPOINTS } from "../../endpoints";
 export default function Cart() {
   const [alertEmptyModalView, setAlertEmptyModalView] = useState(false);
 
@@ -13,7 +14,7 @@ export default function Cart() {
   const handleCheckout = async () => {
     if (data.length > 0) {
       let userEmail = localStorage.getItem("userEmail");
-      let response = await fetch("http://localhost:3000/api/updateOrderData", {
+      let response = await fetch(`${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/updateOrderData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
