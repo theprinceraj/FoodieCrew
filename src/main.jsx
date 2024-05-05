@@ -12,6 +12,7 @@ import Signup from "./screens/Signup.jsx";
 import Cart from "./screens/Cart.jsx";
 import { CartProvider } from "./components/ContextReducer.jsx";
 import Home from "./screens/Home.jsx";
+import MyOrders from "./screens/MyOrders.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />,
+  },
+  {
+    path: "myorders",
+    element: <MyOrders />,
   },
 ]);
 
