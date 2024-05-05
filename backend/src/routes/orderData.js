@@ -34,4 +34,27 @@ router.post("/updateOrderData", async (req, res) => {
   }
 });
 
+router.post("/fetchOrderData", async (req, res) => {
+  try {
+    let finalOrdersArray = [];
+    let myData = (await Order.findOne({ email: req.body.email })).order_data;
+    if (!myData) {
+      return res.json({ order_data: [] });
+    }
+    myData?.forEach((element, index) => {
+      finalOrdersArray[index] = {};
+      finalOrdersArray[index].order_date = new Date(element[0].order_date);
+      element.splice(0, 1);
+      finalOrdersArray[index].items = [];
+      element.forEach((subElem) => {
+        finalOrdersArray[index].items.push(subElem);
+      });
+    });
+
+    res.json({ order_data: finalOrdersArray });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export default router;
