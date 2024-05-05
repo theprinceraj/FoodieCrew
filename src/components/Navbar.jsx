@@ -52,7 +52,7 @@ export default function Navbar({ showCartOptions = true }) {
                 Home
               </Link>
             </li>
-            {authTokenVar ? (
+            {localStorage.getItem("authToken") ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/myorders">
                   Order History
