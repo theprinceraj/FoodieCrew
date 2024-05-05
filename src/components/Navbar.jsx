@@ -18,10 +18,10 @@ export default function Navbar({ showCartOptions = true }) {
     navigate("/login");
   };
 
-  let authTokenVar = null;
+  const [authTokenVar, setAuthTokenVar] = useState(null);
   useEffect(() => {
     const fetchAuthToken = () => {
-      authTokenVar = localStorage.getItem("authToken");
+      setAuthTokenVar(localStorage.getItem("authToken"));
       console.log(authTokenVar);
     };
     fetchAuthToken();
@@ -52,7 +52,7 @@ export default function Navbar({ showCartOptions = true }) {
                 Home
               </Link>
             </li>
-            {localStorage.getItem("authToken") ? (
+            {authTokenVar ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/myorders">
                   Order History
