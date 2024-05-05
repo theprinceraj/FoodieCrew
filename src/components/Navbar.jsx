@@ -15,13 +15,12 @@ export default function Navbar({ showCartOptions = true }) {
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    setAuthTokenVar(null);
     navigate("/login");
   };
 
-  const [authTokenVar, setAuthTokenVar] = useState(null);
+  let authTokenVar;
   useEffect(() => {
-    setAuthTokenVar(localStorage.getItem("authToken"));
+    authTokenVar = localStorage.getItem("authToken");
     console.log(authTokenVar);
   }, []);
 
