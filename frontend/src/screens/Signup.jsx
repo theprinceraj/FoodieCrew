@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ENDPOINTS } from "../../endpoints";
-
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -33,6 +34,8 @@ export default function Signup() {
       console.log(json);
       if (!json.success) {
         alert("Enter Valid Credentials");
+      } else {
+        navigate("/login");
       }
     }
   };
