@@ -55,9 +55,7 @@ export default function Navbar({ showCartOptions = true }) {
                   Order History
                 </Link>
               </li>
-            ) : (
-              ""
-            )}
+            ) : null}
           </ul>
           {authTokenVar ? (
             <div className="d-flex">
