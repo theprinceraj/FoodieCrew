@@ -18,12 +18,12 @@ export default function Navbar({ showCartOptions = true }) {
     navigate("/login");
   };
 
-  let authTokenVar;
+  let authTokenVar = null;
   useEffect(() => {
-    function fetchAuthToken() {
+    const fetchAuthToken = () => {
       authTokenVar = localStorage.getItem("authToken");
       console.log(authTokenVar);
-    }
+    };
     fetchAuthToken();
   }, []);
 
