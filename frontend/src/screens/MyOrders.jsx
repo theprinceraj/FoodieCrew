@@ -11,7 +11,7 @@ export default function MyOrders() {
   useEffect(() => {
     const fetchOrderData = async () => {
       const response = await fetch(
-        `${ENDPOINTS.BACKEND_DEVELOPMENT_ENDPOINT}/api/fetchOrderData`,
+        `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/fetchOrderData`,
         {
           method: "POST",
           headers: {
