@@ -22,7 +22,6 @@ export default function Navbar({ showCartOptions = true }) {
   useEffect(() => {
     const fetchAuthToken = () => {
       setAuthTokenVar(localStorage.getItem("authToken"));
-      console.log(authTokenVar);
     };
     fetchAuthToken();
   }, []);
