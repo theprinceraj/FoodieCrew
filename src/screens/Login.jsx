@@ -34,6 +34,7 @@ export default function Login() {
         console.log(json);
         alert("Enter Valid Credentials");
       } else {
+        console.log(json.email);
         localStorage.setItem("userEmail", json.email);
         localStorage.setItem("authToken", json.authToken);
         navigate("/");
@@ -79,7 +80,11 @@ export default function Login() {
               onChange={onFieldChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary bg-info">
+          <button
+            type="button"
+            className="btn btn-primary bg-info"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
           <Link to="/signup" className="m-3 btn btn-primary bg-success">
