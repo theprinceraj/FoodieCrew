@@ -22,8 +22,10 @@ await connectDB();
 
 import createUserRoute from "./routes/createUser.js";
 import foodDataRoute from "./routes/displayData.js";
+import orderDataRoute from "./routes/orderData.js";
 app.use("/api", createUserRoute);
 app.use("/api", foodDataRoute);
+app.use("/api", orderDataRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");

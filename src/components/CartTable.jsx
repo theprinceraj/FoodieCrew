@@ -1,8 +1,21 @@
-import { useCart, useDispatchCart } from "../components/ContextReducer";
+import { useCart, useDispatchCart } from "./ContextReducer";
 import Trash from "../assets/trash-fill.svg";
 export default function Cart() {
-  let data = useCart();
   let dispatch = useDispatchCart();
+  let _ = useCart();
+  let data = JSON.parse(localStorage.getItem("order_data"));
+  console.log(data);
+  for (let i = 0; i < data.length; i++) {
+    dispatch({
+      type: "ADD",
+      id: data[i].id,
+      name: data[i].name,
+      price: data[i].price,
+      qty: data[i].qty,
+      size: data[i].size,
+      img: data[i].img,
+    });
+  }
   if (data === undefined || data.length === 0) {
     return <div className="p-3 w-100 text-center fs-4">The cart is empty!</div>;
   } else {

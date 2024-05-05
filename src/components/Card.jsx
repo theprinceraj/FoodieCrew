@@ -18,7 +18,6 @@ export default function Card({ foodItem, options }) {
       }
     }
     if (food !== null) {
-      console.log(food.size, size);
       if (food.size === size) {
         await dispatch({
           type: "UPDATE",
@@ -37,6 +36,7 @@ export default function Card({ foodItem, options }) {
           img: foodItem.img,
         });
       }
+      localStorage.setItem("order_data", data);
       return;
     }
     await dispatch({
@@ -48,6 +48,8 @@ export default function Card({ foodItem, options }) {
       size: size,
       img: foodItem.img,
     });
+    localStorage.setItem("order_data", JSON.stringify(data));
+    return;
   };
   let finalPrice = qty * parseInt(options[size]);
   useEffect(() => {
@@ -70,11 +72,11 @@ export default function Card({ foodItem, options }) {
       </div>
       <div className="card-body">
         <h5 className="card-title">{foodItem.name}</h5>
-        <p className="card-text">Rs. 100</p>
+        <p className="card-text fs-5">₹{finalPrice}</p>
         <div className="container w-100">
           <select
             name=""
-            className="m-2 h-100 bg-success rounded"
+            className="m-2 h-100 rounded"
             onChange={(e) => setQty(e.target.value)}
             ref={qtyRef}
           >
@@ -87,7 +89,7 @@ export default function Card({ foodItem, options }) {
             })}
           </select>
           <select
-            className="m-2 h-100 bg-success rounded"
+            className="m-2 h-100 rounded"
             onChange={(e) => setSize(e.target.value)}
             ref={priceRef}
           >
@@ -97,9 +99,6 @@ export default function Card({ foodItem, options }) {
               </option>
             ))}
           </select>
-
-          <div className="d-inline h-100 fs-5">₹{finalPrice}/-</div>
-
           <div
             className="btn d-flex align-items-center justify-content-center bg-success rounded-3"
             onClick={handleAddToCart}

@@ -27,6 +27,7 @@ export default function Login() {
       if (json.error) {
         alert("Enter Valid Credentials");
       } else {
+        localStorage.setItem("userEmail", json.email);
         localStorage.setItem("authToken", json.authToken);
         navigate("/");
       }

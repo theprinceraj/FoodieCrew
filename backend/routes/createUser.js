@@ -74,7 +74,7 @@ router.post(
             },
           };
           const authToken = jwt.sign(data, process.env.JWT_SECRET);
-          res.json({ authToken: authToken, success: true });
+          res.json({ email: user.email, authToken: authToken, success: true });
         }
       }
     } catch (error) {

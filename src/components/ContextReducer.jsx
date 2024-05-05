@@ -35,6 +35,8 @@ const reducer = (state, action) => {
         }
       });
       return updatedState;
+    case "DROP":
+      return [];
     default:
       console.log("Error in reducer.");
   }
