@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-import { connectDB } from "../db.js";
+import { connectDB } from "../src/db.js";
 await connectDB();
 
 import createUserRoute from "../src/routes/createUser.js";
