@@ -12,7 +12,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     console.log("YOOYOIYOY", credentials.email, credentials.password);
     const response = await fetch(
       `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`,
