@@ -13,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    throw new Error("YOOYOIYOY", credentials.email, credentials.password)
     console.log("YOOYOIYOY", credentials.email, credentials.password);
     const response = await fetch(
       `${ENDPOINTS.BACKEND_PRODUCTION_ENDPOINT}/api/loginUser`,
