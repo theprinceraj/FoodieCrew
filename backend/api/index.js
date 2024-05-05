@@ -28,9 +28,11 @@ app.use("/api", foodDataRoute);
 app.use("/api", orderDataRoute);
 
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.json({ "Hello, World!": "Welcome to FoodieCrew." });
 });
 
 app.listen(PORT, () => {
   console.log(`Live at http://localhost:${PORT}`);
 });
+
+export default app;
