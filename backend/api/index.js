@@ -20,9 +20,9 @@ app.use(express.json());
 import { connectDB } from "../db.js";
 await connectDB();
 
-import createUserRoute from "../routes/createUser.js";
-import foodDataRoute from "../routes/displayData.js";
-import orderDataRoute from "../routes/orderData.js";
+import createUserRoute from "../src/routes/createUser.js";
+import foodDataRoute from "../src/routes/displayData.js";
+import orderDataRoute from "../src/routes/orderData.js";
 app.use("/api", createUserRoute);
 app.use("/api", foodDataRoute);
 app.use("/api", orderDataRoute);
