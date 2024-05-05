@@ -50,9 +50,9 @@ export default function Login() {
       <Navbar />
       <div className="container p-5">
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            handleSubmit();
+            await handleSubmit();
           }}
         >
           <div className="mb-3">
