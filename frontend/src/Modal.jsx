@@ -6,9 +6,11 @@ const MODAL_STYLES = {
   left: "50%",
   backgroundColor: "rgb(34,34,34)",
   transform: "translate(-50%, -50%)",
-  zIndex: 1000,
-  height: "90%",
-  width: "90%",
+  zIndex: 1500,
+  minHeight: "50%",
+  minWidth: "70%",
+  maxHeight: "90%",
+  maxWidth: "90%",
 };
 
 const OVERLAY_STYLES = {

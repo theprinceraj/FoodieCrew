@@ -16,7 +16,10 @@ export default function CartTable() {
           <table className="table table-striped table-hover">
             <thead
               className="fs-4 position-sticky top-0"
-              style={{ backgroundColor: "var(--bs-body-bg)" }}
+              style={{
+                backgroundColor: "var(--bs-body-bg)",
+                transform: "translateY(-2%)",
+              }}
             >
               <tr>
                 <th scope="col">#</th>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -39,6 +39,13 @@ export default function Login() {
       alert("An unknown error occured.");
     }
   };
+
+  useEffect(() => {
+    // redirect to home if already logged in
+    if (localStorage.getItem("authToken")) {
+      navigate("/", { replace: true });
+    }
+  }, []);
 
   const onFieldChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });

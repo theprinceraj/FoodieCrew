@@ -2,9 +2,17 @@ import express from "express";
 const router = express.Router();
 import { Order } from "../models/Order.js";
 
+function formatDate(dateString) {
+  return (
+    new Date(dateString).toLocaleDateString() +
+    " " +
+    new Date(dateString).toLocaleTimeString()
+  );
+}
+
 router.post("/updateOrderData", async (req, res) => {
   let data = req.body;
-  await data.order_data.splice(0, 0, { order_date: data.order_date });
+  data.order_data.unshift({ order_date: formatDate(data.order_date) });
 
   let eId = await Order.findOne({ email: data.email });
   if (eId === null) {
@@ -43,7 +51,7 @@ router.post("/fetchOrderData", async (req, res) => {
     }
     myData?.forEach((element, index) => {
       finalOrdersArray[index] = {};
-      finalOrdersArray[index].order_date = new Date(element[0].order_date);
+      finalOrdersArray[index].order_date = element[0].order_date;
       element.splice(0, 1);
       finalOrdersArray[index].items = [];
       element.forEach((subElem) => {

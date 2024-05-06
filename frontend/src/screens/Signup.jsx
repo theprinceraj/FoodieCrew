@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ENDPOINTS } from "../../endpoints";
 import { useNavigate } from "react-router-dom";
+import Modal from "../Modal";
 export default function Signup() {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
@@ -44,9 +45,26 @@ export default function Signup() {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  const [alertLoggedAlreadyModal, setAlertAlreadyModal] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      setAlertAlreadyModal(true);
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
+      {alertLoggedAlreadyModal && (
+        <Modal
+          onClose={() => {
+            setAlertAlreadyModal(false);
+            navigate("/", { replace: true });
+          }}
+        >
+          <p>You are already logged in.</p>
+        </Modal>
+      )}
       <div className="container p-5">
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="mb-3">

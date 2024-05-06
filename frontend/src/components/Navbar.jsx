@@ -14,7 +14,8 @@ export default function Navbar({ showCartOptions = true }) {
   const data = useCart() || 0;
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
+    localStorage.clear();
+    setAuthTokenVar(null);
     navigate("/login");
   };
 
@@ -27,7 +28,7 @@ export default function Navbar({ showCartOptions = true }) {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-success">
+    <nav className="navbar navbar-expand-lg navbar-light bg-success sticky-top top-0 zindex-sticky">
       <div className="container-fluid">
         <img src={Logo} alt="" height={50} />
         <Link className="navbar-brand fs-3 fst-italic" to="/">
@@ -42,7 +43,15 @@ export default function Navbar({ showCartOptions = true }) {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon position-relative">
+            <div className="position-absolute top-0 end-0 fs-6">
+              {data.length ? (
+                <Badge pill bg="danger">
+                  {data.length}
+                </Badge>
+              ) : null}
+            </div>
+          </span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <ul className="navbar-nav me-auto mb-1">
@@ -68,9 +77,11 @@ export default function Navbar({ showCartOptions = true }) {
                     to="/cart"
                   >
                     <span className="me-1">My Cart</span>
-                    <Badge pill bg="danger">
-                      {data.length}
-                    </Badge>
+                    {data.length ? (
+                      <Badge pill bg="danger">
+                        {data.length}
+                      </Badge>
+                    ) : null}
                   </Link>
                   <div
                     className="btn bg-white text-success mx-1"
