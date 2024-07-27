@@ -54,7 +54,7 @@ export default function MyOrders() {
                                             ))}
                                         </div>
                                     </td>
-                                    <td>{formatDate(order.order_date)}</td>
+                                    <td>{formatDateToIST(order.order_date)}</td>
                                     <td>₹ {calculateTotal(order.items)}</td>
                                 </tr>
                             ))}
@@ -69,3 +69,11 @@ export default function MyOrders() {
         </>
     );
 }
+
+const formatDateToIST = (date) => {
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+    });
+    return formattedDate;
+};
