@@ -2,9 +2,18 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { customFetch } from "../utilities/customFetch";
+import { useNavigate } from "react-router-dom";
 export default function MyOrders() {
+    const navigate = useNavigate();
     function calculateTotal(items) {
         return items.reduce((total, item) => total + item.price * item.qty, 0);
+    }
+    function formatDateToIST(date) {
+        const dateObj = new Date(date);
+        const formattedDate = dateObj.toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+        });
+        return formattedDate;
     }
     const [ordersResponse, setOrdersResponse] = useState([]);
     useEffect(() => {
@@ -69,11 +78,3 @@ export default function MyOrders() {
         </>
     );
 }
-
-const formatDateToIST = (date) => {
-    const dateObj = new Date(date);
-    const formattedDate = dateObj.toLocaleString("en-US", {
-        timeZone: "Asia/Kolkata",
-    });
-    return formattedDate;
-};
