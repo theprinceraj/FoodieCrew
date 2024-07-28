@@ -1,18 +1,16 @@
 import dotenv from "dotenv";
 dotenv.config();
-
+import path from "path";
+import { fileURLToPath } from "url";
 import express from "express";
 const app = express();
 const PORT = 3000;
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
 });
 
 app.use(express.json());
@@ -27,11 +25,14 @@ app.use("/api", createUserRoute);
 app.use("/api", foodDataRoute);
 app.use("/api", orderDataRoute);
 
-app.use("/", (req, res) => {
-  res.json({ "Hello, World!": "Welcome to FoodieCrew." });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "../public")));
+app.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 app.listen(PORT, () => {
-  console.log(`Live at http://localhost:${PORT}`);
+    console.log(`Live at http://localhost:${PORT}`);
 });
 
 export default app;
